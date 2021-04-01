@@ -1,4 +1,4 @@
-package scrappers;
+package scrapers;
 
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -10,13 +10,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScrapperForMainPage {
+public class ScraperForMainPage {
     private static final String MAIN_URL = "https://allegro.pl";
     private static final String DEALS = "/strefaokazji/";
     private static final String CATEGORIES_CLASS = "opbox-sheet _26e29_11PCu card _9f0v0 msts_n7";
     private final Logger logger = Logger.getLogger(this.getClass());
 
-    List<String> extractCategoriesLinks() {
+    public List<String> extractCategoriesLinks() {
         List<String> listOfCategoriesLinks = new ArrayList<>();
 
         Document document;

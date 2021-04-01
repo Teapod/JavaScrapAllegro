@@ -1,5 +1,7 @@
 package model;
 
+// This model is for DEEP scrap
+// Currently not used
 public class ProductLong {
     private String name;
     private String link;

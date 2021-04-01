@@ -1,5 +1,6 @@
 package model;
 
+// This model is for FAST / REGULAR scrap
 public class ProductShort {
     private String name;
     private String link;

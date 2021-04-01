@@ -1,4 +1,4 @@
-package scrappers;
+package scrapers.deepScrap;
 
 import model.ProductLong;
 import org.apache.log4j.Logger;
@@ -9,8 +9,9 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-
-public class ScrapperForProduct {
+// This Scrapper is for DEEP scrap
+// Currently not used
+public class ScraperForProduct {
     private static final String PRODUCT_NAME_CLASS = "_1s2v1 _1djie _4lbi0";
     private static final String PRODUCT_SELLER_AND_RATING_CLASS = "_w7z6o _15mod _9a071_3tKtu";
     private static final String PRODUCT_DISCOUNT_CLASS = "_bsvj8 _1t9p2 _8ozz4 _1dd5x _1jusk _9a071_30JM1";
@@ -22,7 +23,7 @@ public class ScrapperForProduct {
     private final Logger logger = Logger.getLogger(this.getClass());
     private final String productURL;
 
-    public ScrapperForProduct(String productURL) {
+    public ScraperForProduct(String productURL) {
         this.productURL = productURL;
     }
 

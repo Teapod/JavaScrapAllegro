@@ -1,4 +1,4 @@
-package scrappers;
+package scrapers.deepScrap;
 
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -10,12 +10,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScrapperForCategory {
+// This Scrapper is for DEEP scrap
+// Currently not used
+public class ScraperForCategory {
     private static final String LISTING_CLASS = "opbox-listing";
     private final Logger logger = Logger.getLogger(this.getClass());
     private final String categoryURL;
 
-    public ScrapperForCategory(String categoryURL) {
+    public ScraperForCategory(String categoryURL) {
         this.categoryURL = categoryURL;
     }
 

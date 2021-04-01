@@ -1,18 +1,25 @@
-package scrappers;
+package scrapers.deepScrap;
 
 import csvWriter.CSVWriter;
 import model.ProductLong;
 import org.apache.log4j.Logger;
+import scrapers.ScraperForMainPage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-// Not used in current project
-// but made this class to make deeper scrapping
-// and also need to improve "Thread.Sleep" choice
-public class ScrapperToRuleThemAll {
-    private static final Logger logger = Logger.getLogger(ScrapperToRuleThemAll.class);
+/**
+ * Not used in current project
+ * Made this class to make a DEEPer scraping
+ * but due to errors HTTP 403 and HTTP 403 ( site's protection )
+ * decided not to use it
+ * <p>
+ * Also in future
+ * need to improve "Thread.Sleep" choice
+ */
+public class ScraperToRuleThemAll {
+    private static final Logger logger = Logger.getLogger(ScraperToRuleThemAll.class);
 
     // How many categories to scrap?
     private static final int NUMBER_OF_CATEGORIES = 3;
@@ -23,7 +30,7 @@ public class ScrapperToRuleThemAll {
         List<ProductLong> productsFromCategory = new ArrayList<>();
         for (int i = 1; i < maxNumberOfProducts; i++) {
             try {
-                List<String> linksOfProducts = new ScrapperForCategory(linkToCategory + "&p=" + i).getListOfLinksOfProducts();
+                List<String> linksOfProducts = new ScraperForCategory(linkToCategory + "&p=" + i).getListOfLinksOfProducts();
                 scrapProduct(linksOfProducts, productsFromCategory, maxNumberOfProducts);
             } catch (Exception exception) {
                 logger.error(exception);
@@ -40,14 +47,14 @@ public class ScrapperToRuleThemAll {
             for (String link : productsLinks
             ) {
                 System.out.println(++productNumber);
-                ProductLong tempProduct = new ScrapperForProduct(link).extractProduct();
+                ProductLong tempProduct = new ScraperForProduct(link).extractProduct();
                 if (tempProduct != null) {
                     System.out.println(tempProduct.getName());
                     listOfProducts.add(tempProduct);
 
                 }
                 try {
-                    Thread.sleep(1500);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     logger.error(e);
                     e.printStackTrace();
@@ -65,7 +72,7 @@ public class ScrapperToRuleThemAll {
 
         try {
 
-            List<String> categoryLinks = new ScrapperForMainPage().extractCategoriesLinks();
+            List<String> categoryLinks = new ScraperForMainPage().extractCategoriesLinks();
 
             productsFromFirstCategory = scrapCategory(categoryLinks.get(1), MAX_NUMBER_OF_PRODUCTS_PER_CATEGORY);
             productsFromSecondCategory = scrapCategory(categoryLinks.get(2), MAX_NUMBER_OF_PRODUCTS_PER_CATEGORY);

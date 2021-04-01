@@ -1,4 +1,4 @@
-package scrappers;
+package scrapers;
 
 import model.ProductShort;
 import org.apache.log4j.Logger;
@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.List;
 
-public class ScrapperForShortProductsFromCategory {
+public class ScraperForShortProductsFromCategory {
     private static final String LISTING_CLASS = "opbox-listing";
     private static final String PRODUCT_INFO_CLASS = "mx7m_1 mnyp_co mlkp_ag";
     private static final String PRODUCT_NAME_AND_HREF_CLASS = "mgn2_14 m9qz_yp mqu1_16 mp4t_0 m3h2_0 mryx_0 munh_0";
@@ -23,7 +23,7 @@ public class ScrapperForShortProductsFromCategory {
     private final String categoryURL;
 
 
-    public ScrapperForShortProductsFromCategory(String categoryURL) {
+    public ScraperForShortProductsFromCategory(String categoryURL) {
         this.categoryURL = categoryURL;
     }
 
@@ -39,8 +39,6 @@ public class ScrapperForShortProductsFromCategory {
 
         Elements products = element.getElementsByClass(PRODUCT_INFO_CLASS);
 
-        // In listing box we have two links on each product
-        // so we move through loop with +2 steps
         for (int i = 0; i < products.size() && listOfShortProducts.size() < maxNumberOfProducts; i++) {
 
             Element prodInfo = products.get(i).getElementsByClass(PRODUCT_NAME_AND_HREF_CLASS).first();
@@ -49,7 +47,6 @@ public class ScrapperForShortProductsFromCategory {
             productShort.setName(prodInfo.text());
 
             productShort.setLink(prodInfo.getElementsByAttribute("href").first().attr("href"));
-            //   productShort.setLink(prodInfo.attr("href"));
             Element discount = products.get(i).getElementsByClass(PRODUCT_DISCOUNT_CLASS).first();
             if (discount == null) {
                 continue;
